@@ -22,8 +22,8 @@ jobs:
       run: git status
     - name: Commit report
       run: |
-          git config --global user.name 'gmeplace'
-          git config --global user.email 'gmeplace@users.noreply.github.com'
+          git config --global user.name 'rplacesuperstonk'
+          git config --global user.email 'rplacesuperstonk@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git commit -am "sync image"
           git push
