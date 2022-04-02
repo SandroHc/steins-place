@@ -1,21 +1,23 @@
 from io import BytesIO
 from PIL import Image
-import requests
 
-response = requests.get("https://raw.githubusercontent.com/sandrohc/r-steins-place/master/reference.png")
-img = Image.open(BytesIO(response.content))
-img = img.resize((img.size[0] * 3, img.size[1] * 3), Image.NEAREST)
+canvas_width = 2000
+canvas_height = 1000
+canvas_scale = 3
 
-mask_url = "https://raw.githubusercontent.com/sandrohc/r-steins-place/master/mask.png"
-response = requests.get(mask_url)
-mask_i = Image.open(BytesIO(response.content))
-mask = Image.new("1", (3000, 3000), 0)
+top_left = (1499 * canvas_scale, 3 * canvas_scale)  # top left corner
+
+reference_img = open("reference.png", "rb").read()
+img = Image.open(BytesIO(reference_img))
+img = img.resize((img.size[0] * canvas_scale, img.size[1] * canvas_scale), Image.Resampling.NEAREST)
+
+mask_img = open("mask.png", "rb").read()
+mask_i = Image.open(BytesIO(mask_img))
+mask = Image.new("1", (canvas_width * canvas_scale, canvas_height * canvas_scale), 0)
 mask.paste(mask_i)
 
-tl = (1499 * 3, 3 * 3)  # top left corner
-
-unmasked_img = Image.new('RGBA', (3000, 3000))
-unmasked_img.paste(img, tl)
-final_img = Image.new('RGBA', (3000, 3000))
+unmasked_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * canvas_scale))
+unmasked_img.paste(img, top_left)
+final_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * canvas_scale))
 final_img = Image.composite(final_img, unmasked_img, mask)
 final_img.save("overlay.png")

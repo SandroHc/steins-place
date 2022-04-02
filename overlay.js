@@ -21,7 +21,7 @@ if (window.top !== window.self) {
                 i.id = "custom-overlay";
                 i.src = overlay;
                 i.style = "position: absolute;left: 0;top: 0;image-rendering: pixelated;width: 2000px;height: 1000px;";
-                console.log("Placing overlay for:", i.src);
+                console.log("Placing r/SteinsPlace overlay from:", i.src);
                 return i;
             })()
         )
