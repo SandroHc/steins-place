@@ -64,7 +64,7 @@ async function run() {
     img.src = "https://raw.githubusercontent.com/rplacesuperstonk/rplace-image/main/reference.png?tstamp=" + time;
 
     function getPixel(data, x, y) {
-        const index = y*1000 + x
+        const index = y*img.width + x
         return (
             ("#" + data[index].toString(16) + data[index+1].toString(16) + data[index + 2].toString(16)).toUpperCase()
         );
@@ -94,7 +94,7 @@ async function run() {
                     let correct = getPixel(template_data, x, y);
                     let actual = getPixel(data, x, y);
                     console.log(x, y, correct, actual);
-                    if (actual != correct) {
+                    if (actual !== correct) {
                         edited = true;
                         await setPixel(canvas, x + 773, y + 735, correct);
                         break;
