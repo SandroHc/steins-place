@@ -13,18 +13,6 @@
             top: 0;
             left: 0;
         }
-
-        .overlay {
-            position: absolute;
-            right: 0;
-            top: 0;
-            background-color: white;
-            padding: 1rem;
-        }
-
-        .overlay.hide {
-            display: none;
-        }
         
     </style>
 </head>
@@ -35,30 +23,6 @@
         <canvas id = "canvas_foreground" width = "800" height = "500"></canvas>
     </div>
     
-    <script>
-        const hideOverlay = () => {
-            document.getElementById("overlay").classList.add('hide')
-        }
-    </script>
-    <div id = "overlay" class = "overlay">
-        <button onclick="hideOverlay()">X Close</button>
-        <p>
-            To use the overlay install the following browser extension
-            <br />
-            USE THIS FOR CHROME<br />
-            <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en">https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en</a>
-            <br /><br />
-            FOR OPERA YOU WILL NEED TO FIND IT FROM THE SITE<br />
-            <a href="https://www.tampermonkey.net/">https://www.tampermonkey.net/</a>
-            <br /><br />
-            USE THIS FOR FIREFOX<br />
-            <a href="https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/">https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/</a>
-            <br /><br />
-            Then paste this script <a href="https://github.com/gmeplace/thing/blob/main/userscript.user.js">https://github.com/gmeplace/thing/blob/main/userscript.user.js</a>
-            <br /><br />
-            A nice and simple 2-click solution to making sure you never place an incorrect pixel! 
-        </p>
-    </div>
 
     <script>
         const X_PIXELS=23
