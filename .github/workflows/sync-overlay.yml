@@ -1,4 +1,4 @@
-name: Python application
+name: Sync overlay
 
 on:
   push:
@@ -17,6 +17,8 @@ jobs:
       run: git status
     - name: Commit overlay image
       run: |
+          git config --global user.name 'r-steins-place'
+          git config --global user.email 'sandrohc@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add .
           git commit -am "Sync overlay image"
