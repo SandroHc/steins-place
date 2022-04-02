@@ -2,17 +2,20 @@
 // @name         SuperStonk rplace autoclicker
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  try to take over the canvas!
-// @author       oralekin
+// @description  support clicking
+// @author       halfdane
 // @match        https://hot-potato.reddit.com/embed*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @grant        none
+// @updateURL    https://rplacesuperstonk.github.io/rplace-image/autoclicker.user.js
+// @downloadURL  https://rplacesuperstonk.github.io/rplace-image/autoclicker.user.js
 // ==/UserScript==
 
-
+const X_OFFSET = 773
+const Y_OFFSET = 735
 
 async function run() {
-    console.log("run");
+    const debug=true;
     const g = (e, t) =>
         new CustomEvent(e, {
             composed: !0,
@@ -26,11 +29,11 @@ async function run() {
     }
 
     const colors = {
-        2: "#FF450",
-        3: "#FFA80",
-        4: "#FFD635",
-        6: "#0A368",
-        8: "#7EED56",
+        2:  "#FF4500",
+        3:  "#FFA800",
+        4:  "#FFD635",
+        6:  "#00A368",
+        8:  "#7EED56",
         12: "#2450A4",
         13: "#3690EA",
         14: "#51E9F4",
@@ -38,7 +41,7 @@ async function run() {
         19: "#B44AC0",
         23: "#FF99AA",
         25: "#9C6926",
-        27: "#000",
+        27: "#000000",
         29: "#898D90",
         30: "#D4D7D9",
         31: "#FFFFFF",
@@ -47,26 +50,28 @@ async function run() {
         colors[v] = k;
     }
 
-    let template_data
-    var img = new Image();
-    img.crossOrigin = "Anonymous";
-    img.onload = function() {
-        var template_canvas = document.createElement("canvas");
-        template_canvas.width = img.width;
-        template_canvas.height = img.height;
-        var template_ctx = template_canvas.getContext("2d");
-        template_ctx.drawImage(img, 0, 0);
-        template_data = template_ctx.getImageData(0,0, img.width, img.height).data;
-
-        console.log(img.width, img.height, template_data);
+    async function get_template_ctx(){
+        return new Promise((resolve, reject) => {
+            let img = new Image()
+            img.crossOrigin = "Anonymous";
+            img.onload = () => {
+                const template_canvas = document.createElement("canvas");
+                template_canvas.width = img.width;
+                template_canvas.height = img.height;
+                const template_ctx = template_canvas.getContext("2d");
+                template_ctx.drawImage(img, 0, 0);
+                resolve({template_ctx: template_ctx, template_img: img})
+            }
+            img.onerror = reject
+            img.src = "https://raw.githubusercontent.com/rplacesuperstonk/rplace-image/main/reference.png?tstamp=" + Math.floor(Date.now() / 10000);
+        })
     }
-    const time = Math.floor(Date.now() / 10000);
-    img.src = "https://raw.githubusercontent.com/rplacesuperstonk/rplace-image/main/reference.png?tstamp=" + time;
 
-    function getPixel(data, x, y) {
-        const index = y*img.width + x
+    function getPixel(ctx, x, y) {
+        const pixel = ctx.getImageData(x, y, 1, 1);
+        const data = pixel.data;
         return (
-            ("#" + data[index].toString(16) + data[index+1].toString(16) + data[index + 2].toString(16)).toUpperCase()
+            ("#" + data[0].toString(16).padStart(2, 0) + data[1].toString(16).padStart(2, 0) + data[2].toString(16).padStart(2, 0)).toUpperCase()
         );
     }
 
@@ -75,32 +80,47 @@ async function run() {
         await sleep(1_000+ Math.floor(Math.random() * 1_000));
         canvas.dispatchEvent(g("select-color", { color: 1*colors[color] }));
         await sleep(1_000+ Math.floor(Math.random() * 1_000));
-        //canvas.dispatchEvent(g("confirm-pixel"));
+        if (!debug){
+            canvas.dispatchEvent(g("confirm-pixel"));
+        }
     }
 
-    await sleep(10_000);
+    await sleep(5_000);
 
     while (true) {
         console.log("running");
         let edited = false;
         try{
-            let ml = document.querySelector("mona-lisa-embed");
-            let canvas = ml.shadowRoot.querySelector("mona-lisa-canvas").shadowRoot.querySelector("div > canvas")
-            var ctx = canvas.getContext('2d');
-            var imageData = ctx.getImageData(773, 735, img.width, img.height);
-            const data = imageData.data;
-            for (let x = 0; x < img.width && !edited; x++) {
-                for (let y = 0; y < img.height; y++) {
-                    let correct = getPixel(template_data, x, y);
-                    let actual = getPixel(data, x, y);
-                    console.log(x, y, correct, actual);
+            const {template_ctx, template_img} = await get_template_ctx();
+
+            const ml = document.querySelector("mona-lisa-embed");
+            const canvas = ml.shadowRoot.querySelector("mona-lisa-canvas").shadowRoot.querySelector("div > canvas")
+            const ctx = canvas.getContext('2d');
+            const errors = []
+            for (let x = 0; x < template_img.width; x++) {
+                for (let y = 0; y < template_img.height; y++) {
+                    let correct = getPixel(template_ctx, x, y);
+                    let actual = getPixel(ctx, x+X_OFFSET, y+Y_OFFSET);
                     if (actual !== correct) {
-                        edited = true;
-                        await setPixel(canvas, x + 773, y + 735, correct);
-                        break;
+                        errors.push({x: x, y: y, correct: correct, actual: actual});
                     }
                 }
             }
+
+            if (errors.length > 0) {
+                var e = errors[Math.floor(Math.random()*errors.length)];
+
+                console.log("(%s / %s) is %c%s%c but should be %c%s", e.x, e.y,
+                    "background:"+e.actual, e.actual, "background:inherit;",
+                    "background:"+e.correct, e.correct
+                )
+
+                await setPixel(canvas, e.x + X_OFFSET, e.y + Y_OFFSET, e.correct);
+                if (!debug){
+                    edited = true;
+                }
+            }
+
         } catch (error){
             console.log("ignoring", error);
         } finally {
@@ -110,8 +130,11 @@ async function run() {
             } else {
                 timeout =Math.floor(Math.random() * 5_000);
             }
-            //console.log("sleeping for ", timeout);
-            await sleep(100);
+            if (debug){
+                timeout = 1;
+            }
+            console.log("sleeping for ", timeout);
+            await sleep(timeout);
         }
     }
 }
