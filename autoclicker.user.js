@@ -15,7 +15,7 @@ const X_OFFSET = 773
 const Y_OFFSET = 735
 
 async function run() {
-    const debug=true;
+    const debug=false;
     const g = (e, t) =>
         new CustomEvent(e, {
             composed: !0,
@@ -102,7 +102,7 @@ async function run() {
                     let correct = getPixel(template_ctx, x, y);
                     let actual = getPixel(ctx, x+X_OFFSET, y+Y_OFFSET);
                     if (actual !== correct) {
-                        errors.push({x: x, y: y, correct: correct, actual: actual});
+                        errors.push({x: x+X_OFFSET, y: y+Y_OFFSET, correct: correct, actual: actual});
                     }
                 }
             }
@@ -115,7 +115,7 @@ async function run() {
                     "background:"+e.correct, e.correct
                 )
 
-                await setPixel(canvas, e.x + X_OFFSET, e.y + Y_OFFSET, e.correct);
+                await setPixel(canvas, e.x, e.y, e.correct);
                 if (!debug){
                     edited = true;
                 }
