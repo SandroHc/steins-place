@@ -19,3 +19,13 @@ unmasked_img = Image.new('RGBA', (3000, 3000))
 unmasked_img.paste(img, tl)
 final_img = Image.composite(final_img, unmasked_img, mask)
 final_img.save("superstonk_overlay.png")
+
+response = requests.get("https://raw.githubusercontent.com/rplacesuperstonk/rplace-image/main/test_env/reference.png")
+img = Image.open(BytesIO(response.content))
+img = img.resize((img.size[0] * 3, img.size[1] * 3), Image.NEAREST)
+
+final_img = Image.new('RGBA', (3000, 3000))
+unmasked_img = Image.new('RGBA', (3000, 3000))
+unmasked_img.paste(img, tl)
+final_img = Image.composite(final_img, unmasked_img, mask)
+final_img.save("test_env/superstonk_overlay.png")
