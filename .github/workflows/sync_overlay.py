@@ -20,4 +20,8 @@ unmasked_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * c
 unmasked_img.paste(img, top_left)
 final_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * canvas_scale))
 final_img = Image.composite(final_img, unmasked_img, mask)
-final_img.save("overlay.png")
+
+# Compress the image by reducing the color palette from 32-bit color to 8-bit
+final_img = final_img.quantize()
+
+final_img.save("overlay.png", optimize=True)
