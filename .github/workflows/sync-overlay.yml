@@ -12,7 +12,7 @@ jobs:
     - name: Python deps
       run: pip install pillow requests
     - name: Run a one-line script
-      run: python ./.github/workflows/sync_overlay.py
+      run: python ./sync_overlay.py
     - name: Check changes
       run: git status
     - name: Commit overlay image
