@@ -5,7 +5,7 @@ canvas_width = 2000
 canvas_height = 1000
 canvas_scale = 3
 
-top_left = (1508 * canvas_scale, 3 * canvas_scale)  # top left corner
+top_left = (1508 * canvas_scale, 2 * canvas_scale)  # top left corner
 
 reference_img = open("reference.png", "rb").read()
 img = Image.open(BytesIO(reference_img))
