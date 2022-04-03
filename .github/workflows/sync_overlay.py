@@ -5,23 +5,29 @@ canvas_width = 2000
 canvas_height = 1000
 canvas_scale = 3
 
-top_left = (1508 * canvas_scale, 2 * canvas_scale)  # top left corner
+print('Preparing reference-nixie-tubes.png')
+nixie_tubes_pos = (1508 * canvas_scale, 2 * canvas_scale)  # top left corner
+nixie_tubes_img = open("reference-nixie-tubes.png", "rb").read()
+nixie_tubes_img = Image.open(BytesIO(nixie_tubes_img))
+nixie_tubes_img = nixie_tubes_img.resize((nixie_tubes_img.size[0] * canvas_scale, nixie_tubes_img.size[1] * canvas_scale), Image.Resampling.NEAREST)
 
-reference_img = open("reference.png", "rb").read()
-img = Image.open(BytesIO(reference_img))
-img = img.resize((img.size[0] * canvas_scale, img.size[1] * canvas_scale), Image.Resampling.NEAREST)
+print('Joining all references')
+unmasked_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * canvas_scale))
+unmasked_img.paste(nixie_tubes_img, nixie_tubes_pos)
 
+print('Preparing mask')
 mask_img = open("mask.png", "rb").read()
 mask_i = Image.open(BytesIO(mask_img))
 mask = Image.new("1", (canvas_width * canvas_scale, canvas_height * canvas_scale), 0)
 mask.paste(mask_i)
 
-unmasked_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * canvas_scale))
-unmasked_img.paste(img, top_left)
+print('Applying mask to image')
 final_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * canvas_scale))
 final_img = Image.composite(final_img, unmasked_img, mask)
 
 # Compress the image by reducing the color palette from 32-bit color to 8-bit
+print('Compressing image')
 final_img = final_img.quantize()
 
+print('Saving image')
 final_img.save("overlay.png", optimize=True)
