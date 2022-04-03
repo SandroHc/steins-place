@@ -6,7 +6,7 @@ canvas_height = 1000
 canvas_scale = 3
 
 print('Preparing reference-nixie-tubes.png')
-nixie_tubes_pos = (1508 * canvas_scale, 2 * canvas_scale)  # top left corner
+nixie_tubes_pos = (1508 * canvas_scale, 3 * canvas_scale)  # top left corner
 nixie_tubes_img = open("reference-nixie-tubes.png", "rb").read()
 nixie_tubes_img = Image.open(BytesIO(nixie_tubes_img))
 nixie_tubes_img = nixie_tubes_img.resize((nixie_tubes_img.size[0] * canvas_scale, nixie_tubes_img.size[1] * canvas_scale), Image.Resampling.NEAREST)
