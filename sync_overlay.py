@@ -11,9 +11,16 @@ starter_img = open("reference-starter.png", "rb").read()
 starter_img = Image.open(BytesIO(starter_img))
 starter_img = starter_img.resize((starter_img.size[0] * canvas_scale, starter_img.size[1] * canvas_scale), Image.Resampling.NEAREST)
 
+print('Preparing reference-titanfolk.png')
+titanfolk_pos = (100 * canvas_scale, 641 * canvas_scale)  # top left corner
+titanfolk_img = open("reference-titanfolk.png", "rb").read()
+titanfolk_img = Image.open(BytesIO(titanfolk_img))
+titanfolk_img = titanfolk_img.resize((titanfolk_img.size[0] * canvas_scale, titanfolk_img.size[1] * canvas_scale), Image.Resampling.NEAREST)
+
 print('Joining all references')
 unmasked_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * canvas_scale))
-unmasked_img.paste(starter_img, starter_pos)
+# unmasked_img.paste(starter_img, starter_pos)
+unmasked_img.paste(titanfolk_img, titanfolk_pos)
 
 print('Preparing mask')
 mask_img = open("mask.png", "rb").read()
