@@ -5,22 +5,15 @@ canvas_width = 2000
 canvas_height = 2000
 canvas_scale = 3
 
-print('Preparing reference-nixie-tubes.png')
-nixie_tubes_pos = (1182 * canvas_scale, 23 * canvas_scale)  # top left corner
-nixie_tubes_img = open("reference-nixie-tubes.png", "rb").read()
-nixie_tubes_img = Image.open(BytesIO(nixie_tubes_img))
-nixie_tubes_img = nixie_tubes_img.resize((nixie_tubes_img.size[0] * canvas_scale, nixie_tubes_img.size[1] * canvas_scale), Image.Resampling.NEAREST)
-
-print('Preparing reference-okabe.png')
-okabe_pos = (486 * canvas_scale, 1879 * canvas_scale)  # top left corner
-okabe_img = open("reference-okabe.png", "rb").read()
-okabe_img = Image.open(BytesIO(okabe_img))
-okabe_img = okabe_img.resize((okabe_img.size[0] * canvas_scale, okabe_img.size[1] * canvas_scale), Image.Resampling.NEAREST)
+print('Preparing reference-starter.png')
+starter_pos = (0 * canvas_scale, 0 * canvas_scale)  # top left corner
+starter_img = open("reference-starter.png", "rb").read()
+starter_img = Image.open(BytesIO(starter_img))
+starter_img = starter_img.resize((starter_img.size[0] * canvas_scale, starter_img.size[1] * canvas_scale), Image.Resampling.NEAREST)
 
 print('Joining all references')
 unmasked_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * canvas_scale))
-unmasked_img.paste(nixie_tubes_img, nixie_tubes_pos)
-unmasked_img.paste(okabe_img, okabe_pos)
+unmasked_img.paste(starter_img, starter_pos)
 
 print('Preparing mask')
 mask_img = open("mask.png", "rb").read()

@@ -12,4 +12,4 @@ Hello! This is the code to generate the [r/SteinsPlace](https://reddit.com/r/Ste
 ## Local setup
 
 1. Install Python 3
-2. Install Pillow module - `pip install PIL`
+2. Install Pillow module - `pip install Pillow`
