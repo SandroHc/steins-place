@@ -7,7 +7,8 @@ Hello! This is the code to generate the [Steins;Place](https://discord.gg/nAqaXh
 1. Update `reference.png`
 2. Update x/y offsets on `sync_overlay.py`
 3. Update x/y offsets on `index.html`
-4. Run `python .\sync_overlay.py`
+4. Update x/y offsets on `overlay.json` (with offset!)
+5. Run `python .\sync_overlay.py`
 
 ## Local setup
 

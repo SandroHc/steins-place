@@ -1,0 +1,21 @@
+{
+	"faction": "Steins;Place",
+	"contact": "https://discord.gg/nAqaXhpafP, r/SteinsPlace",
+	"templates": [
+		{
+			"name": "Steins;Place",
+			"sources": [
+				"https://raw.githubusercontent.com/sandrohc/r-steins-place/master/reference-simple.png"
+			],
+			"x": 248,
+			"y": 709
+		}
+	],
+	"whitelist": [],
+	"blacklist": [
+		{
+			"name": "Steins;Place",
+			"url": "https://raw.githubusercontent.com/sandrohc/r-steins-place/master/overlay.json"
+		}
+	]
+}
