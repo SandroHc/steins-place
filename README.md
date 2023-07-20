@@ -1,6 +1,6 @@
 # r/SteinsPlace overlay
 
-Hello! This is the code to generate the [r/SteinsPlace](https://reddit.com/r/SteinsPlace/) overlay.
+Hello! This is the code to generate the [Steins;Place](https://discord.gg/nAqaXhpafP) overlay.
 
 ## Updating the overlay
 
@@ -12,4 +12,4 @@ Hello! This is the code to generate the [r/SteinsPlace](https://reddit.com/r/Ste
 ## Local setup
 
 1. Install Python 3
-2. Install Pillow module - `pip install Pillow`
+2. Install Pillow module - `python -m pip install pillow`

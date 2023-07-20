@@ -14,11 +14,11 @@
             background-color: #fff8ee;
         }
 
-        .canvas {
+        *[data-reference] {
             position: relative;
         }
 
-        .canvas > canvas {
+        *[data-reference] > canvas {
             position: absolute;
             top: 0;
             left: 0;
@@ -26,10 +26,11 @@
         }
 
         h5 {
-            margin-top: 1rem;
+            margin-top: 0.7rem;
         }
 
         h6 {
+            margin-top: 1rem;
             font-weight: bold;
         }
 
@@ -40,8 +41,11 @@
     </style>
 </head>
 <body>
-    <h5>Using the overlay</h5>
+    <h5>Instructions</h5>
     <ol class="instructions">
+        <li>
+            Join Steins;Place's <a href="https://discord.gg/nAqaXhpafP" target="_blank">Discord server</a>.
+        </li>
         <li>
             Install <a href="https://tampermonkey.net/" target="_blank">Tampermonkey</a> (Chrome, Edge or Opera), or <a href="https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/" target="_blank">Violentmonkey</a> (Firefox). Android users can use <a href="https://play.google.com/store/apps/details?id=com.kiwibrowser.browser">Kiwi Browser</a> and install the script as usual.
         </li>
@@ -53,20 +57,17 @@
         </li>
     </ol>
 
-    <h5>Designs</h5>
-
-    <!-- reference-simple.png -->
-    <h6><a href="https://www.reddit.com/r/place/?cx=248&cy=709&px=23" target="_blank">Steins;Place (248, 709)</a></h6>
-    <div class="canvas" data-reference="reference-simple.png" data-x="248" data-y="709">
-        <canvas class="bg" width="800" height="500"></canvas>
-        <canvas class="fg" width="800" height="500"></canvas>
+    <h6><a href="https://www.reddit.com/r/place" target="_blank">Steins;Place</a></h6>
+    <div data-reference="reference-simple.png" data-x="-252" data-y="209">
+        <canvas class="bg"></canvas>
+        <canvas class="fg"></canvas>
     </div>
 
     <script>
-        const PIXEL_WIDTH = 20;
-        const PIXEL_HEIGHT = 20;
+        const PIXEL_WIDTH = 15;
+        const PIXEL_HEIGHT = 15;
 
-        for (let canvas of document.getElementsByClassName('canvas')) {
+        for (const canvas of document.querySelectorAll('*[data-reference]')) {
             drawCanvas(canvas);
         }
 
@@ -152,10 +153,14 @@
 
         function drawCanvas(el) {
             const reference = el.dataset.reference;
+            const title = el.previousElementSibling.children[0];
             const offsetX = +el.dataset.x;
             const offsetY = +el.dataset.y;
 
             console.log("Drawing '" + reference + "' with offset (" + offsetX + "," + offsetY + ")");
+
+            title.href = `https://www.reddit.com/r/place/?cx=${offsetX}&cy=${offsetY}&px=23`
+            title.innerText = title.innerText + ` (${offsetX}, ${offsetY})`
 
             const background = el.getElementsByClassName('bg')[0];
             const foreground = el.getElementsByClassName('fg')[0];

@@ -1,19 +1,29 @@
 from io import BytesIO
 from PIL import Image
 
+references = [
+    ('reference-simple.png', (-252, 209))
+]
+
 canvas_width = 2000
 canvas_height = 2000
 canvas_scale = 3
+canvas_shift = 500
 
-print('Preparing reference-simple.png')
-simple_pos = (248 * canvas_scale, 709 * canvas_scale)  # top left corner
-simple_img = open("reference-simple.png", "rb").read()
-simple_img = Image.open(BytesIO(simple_img))
-simple_img = simple_img.resize((simple_img.size[0] * canvas_scale, simple_img.size[1] * canvas_scale), Image.Resampling.NEAREST)
-
-print('Joining all references')
 unmasked_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * canvas_scale))
-unmasked_img.paste(simple_img, simple_pos)
+
+for reference in references:
+    file, coords = reference
+    x, y = coords
+
+    print(f'Preparing \'{file}\' at {coords}')
+
+    img = open(file, "rb").read()
+    img = Image.open(BytesIO(img))
+    img = img.resize((img.size[0] * canvas_scale, img.size[1] * canvas_scale), Image.Resampling.NEAREST)
+    pos = ((x + canvas_shift) * canvas_scale, (y + canvas_shift) * canvas_scale)  # top left corner
+
+    unmasked_img.paste(img, pos)
 
 print('Preparing mask')
 mask_img = open("mask.png", "rb").read()
