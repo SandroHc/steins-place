@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         Steins;Place 2023
 // @namespace    http://tampermonkey.net/
-// @version      2
+// @version      3
 // @description  Steins;Place overlay for r/place 2023.
 // @author       SandroHc
 // @match        https://garlic-bread.reddit.com/embed*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
+// @downloadURL  https://raw.githubusercontent.com/SandroHc/r-steins-place/master/overlay.js
+// @updateURL    https://raw.githubusercontent.com/SandroHc/r-steins-place/master/overlay.js
+// @icon         https://raw.githubusercontent.com/SandroHc/r-steins-place/master/favicon.png
 // @grant        none
 // @license      MIT
 // ==/UserScript==
