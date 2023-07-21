@@ -2,7 +2,7 @@ from io import BytesIO
 from PIL import Image
 
 references = [
-    ('template.png', (225, -12))
+    ('template.png', (222, -22))
 ]
 
 canvas_width = 2000
