@@ -12,10 +12,5 @@
 		}
 	],
 	"whitelist": [],
-	"blacklist": [
-		{
-			"name": "Steins;Place",
-			"url": "https://r-steins-place.pages.dev/overlay.json"
-		}
-	]
+	"blacklist": []
 }
