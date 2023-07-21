@@ -5,10 +5,10 @@
 		{
 			"name": "Steins;Place",
 			"sources": [
-				"https://r-steins-place.pages.dev/reference-simple.png"
+				"https://r-steins-place.pages.dev/template.png"
 			],
-			"x": 248,
-			"y": 709
+			"x": 725,
+			"y": 488
 		}
 	],
 	"whitelist": [],
