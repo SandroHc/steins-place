@@ -11,6 +11,15 @@
 			"y": 488
 		}
 	],
-	"whitelist": [],
+	"whitelist": [
+		{
+			"name": "/r/EightySix",
+			"url": "https://rentry.co/86Place2023/raw"
+		},
+		{
+			"name": "/r/Vivy",
+			"url": "https://rentry.co/VivyPlace2023/raw"
+		}
+	],
 	"blacklist": []
 }
