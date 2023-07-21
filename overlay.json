@@ -1,25 +1,60 @@
 {
-	"faction": "Steins;Place",
-	"contact": "https://discord.gg/nAqaXhpafP",
-	"templates": [
-		{
-			"name": "Steins;Place",
-			"sources": [
-				"https://r-steins-place.pages.dev/template.png"
-			],
-			"x": 722,
-			"y": 478
-		}
-	],
-	"whitelist": [
-		{
-			"name": "/r/EightySix",
-			"url": "https://rentry.co/86Place2023/raw"
-		},
-		{
-			"name": "/r/Vivy",
-			"url": "https://rentry.co/VivyPlace2023/raw"
-		}
-	],
-	"blacklist": []
+  "faction": "/r/Vivy",
+  "contact": "https://discord.com/invite/V6n7NSVRCE",
+  "templates": [
+    {
+      "name": "Vivy Art",
+      "sources": ["https://i.imgur.com/BwiqOBY.png"],
+      "x": 598,
+      "y": 488
+    }
+  ],
+  "whitelist": [
+    {
+      "name": "/r/EightySix",
+      "url": "https://rentry.co/86Place2023/raw"
+    },
+    {
+      "name": "/r/steinsgate/",
+      "url": "https://rentry.co/SteinsPlaceOverlay/raw"
+    },
+    {
+      "name": "/r/attackontitan",
+      "url": "https://rentry.co/TitanPlace2023/raw"
+    },
+    {
+      "name": "/r/5ToubunNoHanayome/",
+      "url": "https://rentry.co/QuintsPlace/raw"
+    },
+    {
+      "name": "/r/Corridor",
+      "url": "https://rentry.co/CorridorPlace2023/raw"
+    }
+  ],
+  "blacklist": [
+    {
+      "name": "/r/EightySix Hijacked",
+      "url": "https://rentry.co/86Place/raw"
+    },
+    {
+      "name": "/r/attackontitan Hijacked",
+      "url": "https://rentry.co/TitanPlace/raw"
+    },
+    {
+      "name": "/r/Vivy Hijacked",
+      "url": "https://rentry.co/VivyPlace/raw"
+    },
+    {
+      "name": "/r/5ToubunNoHanayome/ Hijacked",
+      "url": "https://rentry.co/QuintsPlace/raw"
+    },
+    {
+      "name": "/r/steinsgate/ Hijacked",
+      "url": "https://rentry.co/SteinsPlace/raw"
+    },
+    {
+      "name": "/r/Corridor/ Hijacked",
+      "url": "https://rentry.co/CorridorPlace/raw"
+    }
+  ]
 }
