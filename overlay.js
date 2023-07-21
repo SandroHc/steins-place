@@ -1,18 +1,18 @@
 // ==UserScript==
 // @name         Steins;Place 2023
 // @namespace    http://tampermonkey.net/
-// @version      3
+// @version      4
 // @description  Steins;Place overlay for r/place 2023.
 // @author       SandroHc
 // @match        https://garlic-bread.reddit.com/embed*
-// @downloadURL  https://raw.githubusercontent.com/SandroHc/r-steins-place/master/overlay.js
-// @updateURL    https://raw.githubusercontent.com/SandroHc/r-steins-place/master/overlay.js
-// @icon         https://raw.githubusercontent.com/SandroHc/r-steins-place/master/favicon.png
+// @downloadURL  https://r-steins-place.pages.dev/overlay.js
+// @updateURL    https://r-steins-place.pages.dev/overlay.js
+// @icon         https://r-steins-place.pages.dev/favicon.png
 // @grant        none
 // @license      MIT
 // ==/UserScript==
 
-const overlay = "https://raw.githubusercontent.com/sandrohc/r-steins-place/master/overlay.png?tstamp=" + Math.floor(Date.now() / 10000);
+const overlay = "https://r-steins-place.pages.dev/overlay.png?tstamp=" + Math.floor(Date.now() / 10000);
 console.log("[PLACE] Placing overlay for Steins;Place:", overlay);
 
 if (window.top !== window.self) {

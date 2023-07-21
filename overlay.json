@@ -5,7 +5,7 @@
 		{
 			"name": "Steins;Place",
 			"sources": [
-				"https://raw.githubusercontent.com/sandrohc/r-steins-place/master/reference-simple.png"
+				"https://r-steins-place.pages.dev/reference-simple.png"
 			],
 			"x": 248,
 			"y": 709
@@ -15,7 +15,7 @@
 	"blacklist": [
 		{
 			"name": "Steins;Place",
-			"url": "https://raw.githubusercontent.com/sandrohc/r-steins-place/master/overlay.json"
+			"url": "https://r-steins-place.pages.dev/overlay.json"
 		}
 	]
 }
