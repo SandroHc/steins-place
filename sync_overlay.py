@@ -6,7 +6,7 @@ references = [
 ]
 
 canvas_width = 2000
-canvas_height = 2000
+canvas_height = 1000
 canvas_scale = 3
 
 unmasked_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * canvas_scale))
