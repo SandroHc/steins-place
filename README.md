@@ -9,9 +9,13 @@ Hello! This is the code to generate the [Steins;Place](https://discord.gg/nAqaXh
 - https://r-steins-place.pages.dev
 - https://r-steins-place.pages.dev/overlay.json
 
+## Installing the overlay
+
 ## Updating the overlay
 
 1. Update `reference.png`
+2. Update x/y offsets on `overlay.json`
+(Optional)
 2. Update x/y offsets on `sync_overlay.py`
 3. Update x/y offsets on `index.html`
 4. Update x/y offsets on `overlay.json` (with offset!)
