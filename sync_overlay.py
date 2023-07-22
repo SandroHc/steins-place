@@ -2,13 +2,12 @@ from io import BytesIO
 from PIL import Image
 
 references = [
-    ('template.png', (-720, 327))
+    ('template.png', (280, 827))
 ]
 
 canvas_width = 2000
 canvas_height = 2000
 canvas_scale = 3
-canvas_shift = 500
 
 unmasked_img = Image.new('RGBA', (canvas_width * canvas_scale, canvas_height * canvas_scale))
 
@@ -21,7 +20,7 @@ for reference in references:
     img = open(file, "rb").read()
     img = Image.open(BytesIO(img))
     img = img.resize((img.size[0] * canvas_scale, img.size[1] * canvas_scale), Image.Resampling.NEAREST)
-    pos = ((x + canvas_shift) * canvas_scale, (y + canvas_shift) * canvas_scale)  # top left corner
+    pos = (x * canvas_scale, y * canvas_scale)  # top left corner
 
     unmasked_img.paste(img, pos)
 
