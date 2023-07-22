@@ -4,39 +4,23 @@
   "templates": [
     {
       "name": "Steins;Place Art 1",
-      "sources": [""],
-      "x": 280,
-      "y": 827
+      "sources": ["https://r-steins-place.pages.dev/template.png"],
+      "x": 282,
+      "y": 814
     }
   ],
   "whitelist": [
-    {
-      "name": "HiFi Rush",
-      "url": "https://raw.githubusercontent.com/Elevatorisbest/hifirush808rplace/main/overlay.json"
-    },
     {
       "name": "/r/omori",
       "url": "https://raw.githubusercontent.com/sunryze-git/omoriplace2023/main/omoriplace.json"
     },
     {
+      "name": "HiFi Rush",
+      "url": "https://raw.githubusercontent.com/Elevatorisbest/hifirush808rplace/main/overlay.json"
+    },
+    {
       "name": "/r/EightySix",
       "url": "https://rentry.co/86Place2023/raw"
-    },
-    {
-      "name": "/r/Vivy",
-      "url": "https://rentry.co/VivyPlace2023/raw"
-    },
-    {
-      "name": "TITANPLACE",
-      "url": "https://rentry.co/TitanPlace2023/raw"
-    },
-    {
-      "name": "/r/5ToubunNoHanayome/",
-      "url": "https://rentry.co/QuintsPlace/raw"
-    },
-    {
-      "name": "/r/Corridor",
-      "url": "https://rentry.co/CorridorPlace2023/raw"
     },
     {
       "name": "/r/WitchHatAtelier",
