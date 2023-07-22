@@ -29,6 +29,10 @@
     {
       "name": "/r/Corridor",
       "url": "https://rentry.co/CorridorPlace2023/raw"
+    },
+    {
+      "name": "/r/WitchHatAtelier",
+      "url": "https://raw.githubusercontent.com/Saturn-7/WHA-TOPtemplate/main/WHATOPtemplate"
     }
   ],
   "blacklist": []
