@@ -5,8 +5,8 @@
     {
       "name": "Steins;Place Art 1",
       "sources": ["https://r-steins-place.pages.dev/template.png"],
-      "x": 365,
-      "y": 240
+      "x": 364,
+      "y": 249
     }
   ],
   "whitelist": [
