@@ -40,3 +40,14 @@ final_img = final_img.quantize()
 
 print('Saving image')
 final_img.save("overlay.png", optimize=True)
+
+
+# Preparing raw overlay for the botnet
+bot_img = Image.new('RGBA', (canvas_width, canvas_height))
+for reference in references:
+    file, coords = reference
+    x, y = coords
+    img = open(file, "rb").read()
+    img = Image.open(BytesIO(img))
+    bot_img.paste(img, coords)
+bot_img.save("overlay-bot.png", optimize=True)
