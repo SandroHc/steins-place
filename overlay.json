@@ -11,6 +11,10 @@
   ],
   "whitelist": [
     {
+      "name": "HiFi Rush",
+      "url": "https://raw.githubusercontent.com/Elevatorisbest/hifirush808rplace/main/overlay.json"
+    },
+    {
       "name": "/r/omori",
       "url": "https://raw.githubusercontent.com/Ayaya-Xiao/omoriplace2023bis/main/omoriplace.json"
     },
