@@ -11,6 +11,10 @@
   ],
   "whitelist": [
     {
+      "name": "/r/omori",
+      "url": "https://raw.githubusercontent.com/Ayaya-Xiao/omoriplace2023bis/main/omoriplace.json"
+    },
+    {
       "name": "/r/EightySix",
       "url": "https://rentry.co/86Place2023/raw"
     },
