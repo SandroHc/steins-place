@@ -47,7 +47,7 @@ if __name__ == '__main__':
     parser.add_argument('-x', '--x', type=int)
     parser.add_argument('-y', '--y', type=int)
     parser.add_argument('-xo', '--x-offset', type=int, default=1000)
-    parser.add_argument('-yo', '--y-offset', type=int, default=500)
+    parser.add_argument('-yo', '--y-offset', type=int, default=1000)
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
