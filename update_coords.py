@@ -4,7 +4,7 @@ import re
 
 def read_num(label: str) -> int:
     while True:
-        i = input(f'{label}:')
+        i = input(f'{label}: ')
         try:
             return int(i)
         except ValueError:
