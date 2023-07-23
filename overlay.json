@@ -15,6 +15,10 @@
       "url": "https://raw.githubusercontent.com/sunryze-git/omoriplace2023/main/omoriplace.json"
     },
     {
+      "name": "DDLC",
+      "url": "https://raw.githubusercontent.com/rattbag/ksddlc/main/ksddlc.json"
+    },
+    {
       "name": "HiFi Rush",
       "url": "https://raw.githubusercontent.com/Elevatorisbest/hifirush808rplace/main/overlay.json"
     },
