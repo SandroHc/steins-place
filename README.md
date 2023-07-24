@@ -11,7 +11,7 @@ Hello! This is the code to generate the [Steins;Place](https://discord.gg/nAqaXh
 
 ## Installing the overlay
 
-The overlay will allow you to view what pixels should come where, directly from on the canvas itself.
+The overlay will allow you to preview what pixels should come where, directly on the canvas.
 
 1. Install a script manager, [such as Tampermonkey](https://tampermonkey.net/#download) (Chrome, Edge or Opera), or [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/) (Firefox). Android users can use [Kiwi Browser](https://play.google.com/store/apps/details?id=com.kiwibrowser.browser) and install the script as usual.
 
