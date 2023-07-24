@@ -33,6 +33,10 @@
     {
       "name": "/r/WitchHatAtelier",
       "url": "https://raw.githubusercontent.com/Saturn-7/WHA-TOPtemplate/main/WHATOPtemplate"
+    },
+    {
+      "name": "Needy Streamer Overload",
+      "url": "https://gist.githubusercontent.com/NSOTemplate/cb1b589bbf42cdd6967532d35633e2d3/raw/2a04a6241c4e1ffb3fe316dec9a8ab2c8c9c6a84/NSOtemplate.json"
     }
   ],
   "blacklist": []
